@@ -12702,8 +12702,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1360639449}
   - component: {fileID: 1360639448}
+  - component: {fileID: 1360639450}
   m_Layer: 0
-  m_Name: SwipeScript
+  m_Name: RepositionScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12736,6 +12737,19 @@ Transform:
   m_Father: {fileID: 922413738}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1360639450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360639447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4370d7a25bf554946866b6f977369eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 0}
 --- !u!1 &1377889722
 GameObject:
   m_ObjectHideFlags: 0
@@ -12855,8 +12869,8 @@ MonoBehaviour:
   OnContentPlaced:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1360639448}
-        m_TargetAssemblyTypeName: addForce, Assembly-CSharp
+      - m_Target: {fileID: 1360639450}
+        m_TargetAssemblyTypeName: OnClickSpawnBall, Assembly-CSharp
         m_MethodName: Throw
         m_Mode: 1
         m_Arguments:
