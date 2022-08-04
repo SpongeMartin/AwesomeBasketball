@@ -29,6 +29,9 @@ public class SwipeScript : MonoBehaviour {
 			// getting touch position and marking time when you touch the screen
 			touchTimeStart = Time.time;
 			startPos = Input.GetTouch (0).position;
+
+			// Each time you touch it sets the ball position to (0,0,0)
+			rb.transform.position = Vector3.zero;
 		}
 
 		// if you release your finger
@@ -49,10 +52,10 @@ public class SwipeScript : MonoBehaviour {
 			// add force to balls rigidbody in 3D space depending on swipe time, direction and throw forces
 			rb.isKinematic = false;
 
-			rb.AddForce (- direction.x * throwForceInXandY, - direction.y * throwForceInXandY, throwForceInZ / timeInterval);
+			rb.AddForce (- direction.x /* throwForceInXandY*/, - direction.y * throwForceInXandY, throwForceInZ / timeInterval);
 
 			// Destroy ball in 4 seconds
-			Destroy (gameObject, 3f);
+			// Destroy (gameObject, 3f);
 
 		}
 			
