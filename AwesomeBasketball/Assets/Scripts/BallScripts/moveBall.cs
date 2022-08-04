@@ -15,6 +15,6 @@ public class moveBall : MonoBehaviour
     void Update()
     {
         rigid.isKinematic = false;
-        rigid.AddForce (1,1,1);
+        // rigid.AddForce (0,3,0);
     }
 }

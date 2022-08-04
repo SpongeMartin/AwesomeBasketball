@@ -48,6 +48,7 @@ public class SwipeScript : MonoBehaviour {
 
 			// add force to balls rigidbody in 3D space depending on swipe time, direction and throw forces
 			rb.isKinematic = false;
+
 			rb.AddForce (- direction.x * throwForceInXandY, - direction.y * throwForceInXandY, throwForceInZ / timeInterval);
 
 			// Destroy ball in 4 seconds
