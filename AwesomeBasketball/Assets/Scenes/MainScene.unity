@@ -12686,10 +12686,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1360639447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4370d7a25bf554946866b6f977369eef, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
-  other: {fileID: 0}
 --- !u!4 &1360639449
 Transform:
   m_ObjectHideFlags: 0
@@ -13094,6 +13093,7 @@ GameObject:
   - component: {fileID: 1791733565}
   - component: {fileID: 1791733564}
   - component: {fileID: 1791733569}
+  - component: {fileID: 1791733570}
   m_Layer: 0
   m_Name: ball
   m_TagString: Untagged
@@ -13207,6 +13207,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab328fcfc2d85584f8d3fcc01833dd46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1791733570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791733563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7311178f7fdf974784dbe86bf9113d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  throwForceInXandY: 1
+  throwForceInZ: 50
 --- !u!43 &1939104670
 Mesh:
   m_ObjectHideFlags: 0
