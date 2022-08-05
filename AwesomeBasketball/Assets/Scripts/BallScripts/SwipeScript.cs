@@ -10,6 +10,9 @@ public class SwipeScript : MonoBehaviour {
 	Rigidbody rb;
 
 	static bool begin=false;
+	GameObject arcamera;
+	GameObject ballIndicator;
+	GameObject ball;
 	void Start()
 	{
 		rb = GetComponent<Rigidbody> ();
@@ -40,13 +43,18 @@ public class SwipeScript : MonoBehaviour {
 				// getting release finger position
 				endPos = Input.GetTouch (0).position;
 
-				// calculating swipe direction in 2D space
+				// calculating swipe direction in 2D space and sends info to moveBall script
 				
 				moveBall.swipeDirection = new Vector3(startPos.x - endPos.x,0,0);
+				ball = GameObject.Find("ball");
+				ballIndicator = GameObject.Find("BallIndicator");
+				arcamera = GameObject.Find("ARCamera");
+				ballRepositionAndVisibility(ball,ballIndicator,arcamera);
+				moveBall.CameraRotation = CameraAngle(arcamera);
+				moveBall.ThrowBegin = true;
+			}
 
-				GameObject ball = GameObject.Find("ball");
-				GameObject ballIndicator = GameObject.Find("BallIndicator");
-				GameObject arcamera = GameObject.Find("ARCamera");
+			void ballRepositionAndVisibility(GameObject ball, GameObject ballIndicator,GameObject arcamera){
 				ball.transform.position = ballIndicator.transform.position;
 				ball.transform.rotation = arcamera.transform.rotation;
 				Rigidbody rigid = ball.GetComponent<Rigidbody>();
@@ -54,10 +62,11 @@ public class SwipeScript : MonoBehaviour {
 				rigid.isKinematic = false;
 				ballIndicator.GetComponent<MeshRenderer>().enabled = false;
 				ball.GetComponent<MeshRenderer>().enabled = true;
-				moveBall.CameraRotation = CameraAngle(arcamera);
-				moveBall.ThrowBegin = true;
 			}
+
+
 			float CameraAngle(GameObject arcamera){
+				//Returns the angle where the camera is facing
 				float angle = arcamera.transform.localEulerAngles.y;
 				if(angle < 0){
 					angle = 360+angle;
