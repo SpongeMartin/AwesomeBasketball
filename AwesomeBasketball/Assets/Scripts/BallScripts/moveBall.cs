@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 public class moveBall : MonoBehaviour
 {
 
@@ -13,6 +15,10 @@ public class moveBall : MonoBehaviour
     Vector3 endPosition;
     public static float CameraRotation;
     GameObject hoop;
+
+    [SerializeField] TextMeshProUGUI status;
+    [SerializeField] TextMeshProUGUI currentScore;
+    [SerializeField] TextMeshProUGUI maxScore;
 
     void Start()
     {
@@ -35,6 +41,24 @@ public class moveBall : MonoBehaviour
                 GetComponent<Rigidbody>().AddForce(new Vector3(0,0,4));
             }
             if(Animation>4f){
+
+                // Updating max score if current score if higher
+                if (ballCollider.score > ballCollider.maxScore) {
+                    ballCollider.maxScore = ballCollider.score;
+                    maxScore.text = ballCollider.maxScore.ToString();
+                }
+
+                // Code to be executed when you miss
+                if (ballCollider.missed) {
+                    status.text = "\n Your max score is: " + ballCollider.maxScore;
+
+                    ballCollider.score = 0;
+                    currentScore.text = "0";
+                }
+
+                // Resets the missed flag
+                ballCollider.missed = true;
+
                 ThrowBegin = false;
                 Animation = 0f;
                 GameObject.Find("BallIndicator").GetComponent<MeshRenderer>().enabled = true;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class SwipeScript : MonoBehaviour {
 
@@ -13,6 +14,9 @@ public class SwipeScript : MonoBehaviour {
 	GameObject arcamera;
 	GameObject ballIndicator;
 	GameObject ball;
+
+    [SerializeField] TextMeshProUGUI status;
+
 	void Start()
 	{
 		rb = GetComponent<Rigidbody> ();
@@ -21,13 +25,13 @@ public class SwipeScript : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
 		// if you touch the screen
 		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) {
 
 			// getting touch position and marking time when you touch the screen
 			touchTimeStart = Time.time;
 			startPos = Input.GetTouch (0).position;
+			status.text = "";
 		}
 
 		if(begin){
@@ -73,7 +77,6 @@ public class SwipeScript : MonoBehaviour {
 				}
 				return angle;
 			}
-		}
-			
+		}		
 	}
 }
