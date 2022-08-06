@@ -96,7 +96,7 @@ public class moveBall : MonoBehaviour
         Vector3 facingOffset = new Vector3(xCoordinate,0,zCoordinate) - swipeDirection/750;
         rigid.isKinematic = false;
         transform.position = MathParabola.Parabola(currentPosition,facingOffset+new Vector3(0,0.3f,-0.1f),0.7f,Animation/1.5f);
-        transform.Rotate(3,0,0,Space.Self);
+        transform.Rotate(-3,0,0,Space.Self);
     }
     void RotateSwipeDirection(){
         swipeDirection = Quaternion.Euler(0, CameraRotation, 0) * swipeDirection;
