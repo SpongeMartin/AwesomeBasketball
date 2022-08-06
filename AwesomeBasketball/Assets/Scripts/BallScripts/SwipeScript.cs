@@ -11,10 +11,8 @@ public class SwipeScript : MonoBehaviour {
 	Rigidbody rb;
 
 	static bool begin=false;
-	GameObject arcamera;
-	GameObject ballIndicator;
-	GameObject ball;
-	GameObject ballParent;
+	[SerializeField] GameObject arcamera;
+	[SerializeField] GameObject ballIndicator;
 
     float swipeDistance;
 
@@ -27,6 +25,8 @@ public class SwipeScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		// if you touch the screen
+		if(MoveBall.ThrowBegin) GetComponent<MeshRenderer>().enabled = true;
+		else GetComponent<MeshRenderer>().enabled = false;
 		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Began) {
 
 			// getting touch position and marking time when you touch the screen
@@ -49,10 +49,8 @@ public class SwipeScript : MonoBehaviour {
 
 				// calculating swipe direction in 2D space and sends info to MoveBall script
 				swipeDistance=Vector2.Distance(startPos,endPos);
-				if(swipeDistance>250f){
-					Debug.Log("WHAT");
+				if(swipeDistance>250f && !MoveBall.ThrowBegin){
 					MoveBall.swipeDirection = new Vector3(startPos.x - endPos.x,0,0);
-					arcamera = GameObject.Find("ARCamera");					
 					ballRepositionAndVisibility(arcamera);
 					MoveBall.CameraRotation = CameraAngle(arcamera);
 					MoveBall.ThrowBegin = true;
@@ -60,8 +58,8 @@ public class SwipeScript : MonoBehaviour {
 			}
 
 			void ballRepositionAndVisibility(GameObject arcamera){
-				ball = GameObject.Find("Ball");
-				ballIndicator = GameObject.Find("BallIndicator");
+				GameObject ball = GameObject.Find("Ball");
+				GameObject ballIndicator = GameObject.Find("BallIndicator");
 				ball.transform.position = ballIndicator.transform.position;
 				ball.transform.rotation = arcamera.transform.rotation;
 				Rigidbody rigid = ball.GetComponent<Rigidbody>();
@@ -69,7 +67,7 @@ public class SwipeScript : MonoBehaviour {
 				rigid.isKinematic = true;
 				rigid.isKinematic = false;
 				ballIndicator.GetComponent<MeshRenderer>().enabled = false;
-				ball.GetComponent<MeshRenderer>().enabled = true;
+				GetComponent<MeshRenderer>().enabled = true;
 			}
 
 

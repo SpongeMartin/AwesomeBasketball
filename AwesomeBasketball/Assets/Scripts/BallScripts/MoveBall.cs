@@ -19,7 +19,6 @@ public class MoveBall : MonoBehaviour
     public static bool HoopCollision = false;
 
     bool firstUpdate = false;
-    float boardHitTimer = 7f;
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
@@ -40,18 +39,7 @@ public class MoveBall : MonoBehaviour
             }
             if((Animation>1.5f && Animation<4f) || HoopCollision){
                 transform.position = transform.position;
-                if(!HoopCollision){
-                    Vector3 AfterAnimationDirection = new Vector3(0,0,7);
-                    transform.localEulerAngles = new Vector3(0,0,0);
-                    GetComponent<Rigidbody>().AddRelativeForce(AfterAnimationDirection);
-                }else if (HoopCollision && boardHitTimer>0f){
-                    boardHitTimer-=0.15f;
-                    Vector3 previousRotation = transform.localEulerAngles;
-                    transform.localEulerAngles = new Vector3(0,0,0);
-                    Vector3 AfterAnimationDirection = new Vector3(0,0,boardHitTimer);
-                    GetComponent<Rigidbody>().AddRelativeForce(-AfterAnimationDirection);
-                    transform.localEulerAngles = previousRotation + new Vector3(0,0,-1);
-                }
+                if(!HoopCollision)GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0,0,15));
             }
             if(Animation>4f){
                 /*
@@ -87,7 +75,6 @@ public class MoveBall : MonoBehaviour
                 GetComponent<MeshRenderer>().enabled = false;
                 HoopCollision = false;
                 firstUpdate = false;
-                boardHitTimer = 7f;
             }
         }
     }
@@ -101,7 +88,7 @@ public class MoveBall : MonoBehaviour
         Vector3 facingOffset = new Vector3(xCoordinate,0,zCoordinate) - swipeDirection/750;
         rigid.isKinematic = false;
         transform.position = MathParabola.Parabola(currentPosition,facingOffset+new Vector3(0,0.3f,-0.1f),0.7f,Animation/1.5f);
-        transform.Rotate(-3,0,0,Space.Self);
+        //transform.Rotate(-3,0,0,Space.Self);
     }
     void RotateSwipeDirection(){
         swipeDirection = Quaternion.Euler(0, CameraRotation, 0) * swipeDirection;
