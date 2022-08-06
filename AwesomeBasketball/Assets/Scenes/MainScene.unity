@@ -13489,7 +13489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eab346fc5261454cb7e1cb1be3d0344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScoreText: {fileID: 636587246}
 --- !u!1 &1484151855
 GameObject:
   m_ObjectHideFlags: 0
@@ -13818,7 +13817,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b78b2ffdbfc32b48a9d2f09e936aa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScore: {fileID: 1484151857}
 --- !u!1 &1747851896
 GameObject:
   m_ObjectHideFlags: 0
@@ -14166,7 +14164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7311178f7fdf974784dbe86bf9113d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  status: {fileID: 1484151857}
 --- !u!114 &1791733572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14179,15 +14176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab328fcfc2d85584f8d3fcc01833dd46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentScoreText: {fileID: 1484151857}
-  maxScoreText: {fileID: 636587246}
 --- !u!43 &1939104670
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31116
+  m_Name: pb_Mesh24954
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14401,7 +14396,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31070
+  m_Name: pb_Mesh24908
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

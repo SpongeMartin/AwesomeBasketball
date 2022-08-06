@@ -16,14 +16,8 @@ public class MoveBall : MonoBehaviour
     public static float CameraRotation;
     GameObject hoop;
 
-    // DEPRICATED
-    // [SerializeField] TextMeshProUGUI status;
-    
-    [SerializeField] TextMeshProUGUI currentScoreText;
-    [SerializeField] TextMeshProUGUI maxScoreText;
-
-
     public static bool HoopCollision = false;
+
     bool firstUpdate = false;
     float boardHitTimer = 7f;
     void Start()
@@ -78,14 +72,12 @@ public class MoveBall : MonoBehaviour
                 // Resets the missed flag
                 BallCollider.missed = true;*/
                 
-                if(GameCycle.scoreHandler.HasUpdatedMaxScore()) {
-                    maxScoreText.text = GameCycle.scoreHandler.GetMaxScore().ToString();
-                }
+                GameCycle.scoreHandler.UpdateMaxScore()
 
                 // Case if the ball does not enter the hoop
                 if(!BallCollider.GetWasCollided()) {
-                    currentScoreText.text = "X";
                     GameCycle.scoreHandler.SetCurrentScore(0);
+                    GameCycle.scoreHandler.SetCurrentScoreText("X");
                 }
                 BallCollider.SetWasCollided(false);
 

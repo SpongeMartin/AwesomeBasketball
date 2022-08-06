@@ -9,13 +9,10 @@ public class BallCollider : MonoBehaviour
 {
     private static bool collided = false;
 
-    [SerializeField] TextMeshProUGUI currentScore;
-    
     void OnTriggerEnter(Collider other)
     {
         if(other.name=="ball"){
             GameCycle.scoreHandler.IncrementCurrentScore();
-            currentScore.text = GameCycle.scoreHandler.GetCurrentScore().ToString();
             SetWasCollided(true);  
         }
     }

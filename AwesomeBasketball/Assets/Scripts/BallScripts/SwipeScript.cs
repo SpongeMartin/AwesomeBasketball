@@ -16,8 +16,7 @@ public class SwipeScript : MonoBehaviour {
 	GameObject ball;
 	GameObject ballParent;
 
-    [SerializeField] TextMeshProUGUI status;
-	float swipeDistance;
+    float swipeDistance;
 
 	void Start()
 	{
@@ -33,7 +32,6 @@ public class SwipeScript : MonoBehaviour {
 			// getting touch position and marking time when you touch the screen
 			touchTimeStart = Time.time;
 			startPos = Input.GetTouch (0).position;
-			status.text = "";
 		}
 
 		if(begin){
