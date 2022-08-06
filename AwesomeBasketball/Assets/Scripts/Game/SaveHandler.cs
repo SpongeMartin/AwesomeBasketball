@@ -12,6 +12,7 @@ public class SaveHandler : MonoBehaviour
     private static string path = Application.persistentDataPath + "/maxscore.abd";
 
     public static void sh_SaveMaxScore (int a_maxScore) {
+        Debug.Log("Saving game data . . . ");
 
         BinaryFormatter _formatter = new BinaryFormatter();
 

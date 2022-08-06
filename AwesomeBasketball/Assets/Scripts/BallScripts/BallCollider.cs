@@ -5,21 +5,16 @@ using System;
 using System.IO;
 using TMPro;
 
-public class ballCollider : MonoBehaviour
+public class BallCollider : MonoBehaviour
 {
-    public static int score = 0;
-    public static int maxScore = 0;
-    public static bool missed = true;
+    private static bool collided = false;
 
-    [SerializeField] TextMeshProUGUI currentScore;
-    
     void OnTriggerEnter(Collider other)
     {
         if(other.name=="ball"){
-            missed = false;
-            score += 1;
-            currentScore.text = score.ToString();
-          }
+            GameCycle.scoreHandler.IncrementCurrentScore();
+            SetWasCollided(true);  
+        }
     }
     
     void OnTriggerStay(Collider other)
@@ -30,5 +25,14 @@ public class ballCollider : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         //Debug.Log("Object exited the trigger");
+    }
+
+    public static bool SetWasCollided(bool a_flag) {
+        collided = a_flag;
+        return collided;
+    }
+
+    public static bool GetWasCollided() {
+        return collided;
     }
 }

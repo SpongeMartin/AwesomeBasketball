@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class moveBall : MonoBehaviour
+public class MoveBall : MonoBehaviour
 {
 
     protected float Animation;
@@ -16,12 +16,8 @@ public class moveBall : MonoBehaviour
     public static float CameraRotation;
     GameObject hoop;
 
-    [SerializeField] TextMeshProUGUI status;
-    [SerializeField] TextMeshProUGUI currentScore;
-    [SerializeField] TextMeshProUGUI maxScore;
-
-
     public static bool HoopCollision = false;
+
     bool firstUpdate = false;
     void Start()
     {
@@ -48,21 +44,30 @@ public class moveBall : MonoBehaviour
             if(Animation>4f){
                 /*
                 // Updating max score if current score if higher
-                if (ballCollider.score > ballCollider.maxScore) {
-                    ballCollider.maxScore = ballCollider.score;
-                    maxScore.text = ballCollider.maxScore.ToString();
+                if (BallCollider.score > BallCollider.maxScoreText) {
+                    BallCollider.maxScoreText = BallCollider.score;
+                    maxScoreText.text = BallCollider.maxScoreText.ToString();
                 }
 
                 // Code to be executed when you miss
-                if (ballCollider.missed) {
-                    status.text = "\n Your max score is: " + ballCollider.maxScore;
+                if (BallCollider.missed) {
+                    status.text = "\n Your max score is: " + BallCollider.maxScoreText;
 
-                    ballCollider.score = 0;
-                    currentScore.text = "0";
+                    BallCollider.score = 0;
+                    currentScoreText.text = "0";
                 }
 
                 // Resets the missed flag
-                ballCollider.missed = true;*/
+                BallCollider.missed = true;*/
+                
+                GameCycle.scoreHandler.UpdateMaxScore()
+
+                // Case if the ball does not enter the hoop
+                if(!BallCollider.GetWasCollided()) {
+                    GameCycle.scoreHandler.SetCurrentScore(0);
+                    GameCycle.scoreHandler.SetCurrentScoreText("X");
+                }
+                BallCollider.SetWasCollided(false);
 
                 ThrowBegin = false;
                 Animation = 0f;

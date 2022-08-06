@@ -8,7 +8,6 @@ public class ScoreText : MonoBehaviour
 
     float width;
     float height;
-    public static int score = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,9 +15,13 @@ public class ScoreText : MonoBehaviour
         height = Screen.height;
     }
 
+    public void SetText(string text) {
+        gameObject.GetComponent<TMP_Text>().text = GameCycle.scoreHandler.GetCurrentScore().ToString();
+    }
     // Update is called once per frame
     void Update()
     {
-        if(score>0) GameObject.Find("ScoreText").GetComponent<TMP_Text>().text = score.ToString();
+        // DEPRICATED: score text should only update when score in increased
+        // if(score>0) GameObject.Find("ScoreText").GetComponent<TMP_Text>().text = score.ToString();
     }
 }
