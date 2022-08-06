@@ -15,16 +15,15 @@ public class moveBall : MonoBehaviour
     Vector3 endPosition;
     public static float CameraRotation;
     GameObject hoop;
-<<<<<<< HEAD
 
     [SerializeField] TextMeshProUGUI status;
     [SerializeField] TextMeshProUGUI currentScore;
     [SerializeField] TextMeshProUGUI maxScore;
 
-=======
+
     public static bool HoopCollision = false;
     bool firstUpdate = false;
->>>>>>> c4dae430a02baaa6656965758bcdc4a0d7bc8a8c
+    float boardHitTimer = 7f;
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
@@ -43,15 +42,23 @@ public class moveBall : MonoBehaviour
                 hoop = GameObject.Find("hoop");
                 CreateParabolaAnimation();
             }
-            if(Animation>1.5f || HoopCollision){
+            if((Animation>1.5f && Animation<4f) || HoopCollision){
                 transform.position = transform.position;
                 if(!HoopCollision){
                     Vector3 AfterAnimationDirection = new Vector3(0,0,7);
+                    transform.localEulerAngles = new Vector3(0,0,0);
                     GetComponent<Rigidbody>().AddRelativeForce(AfterAnimationDirection);
+                }else if (HoopCollision && boardHitTimer>0f){
+                    boardHitTimer-=0.15f;
+                    Vector3 previousRotation = transform.localEulerAngles;
+                    transform.localEulerAngles = new Vector3(0,0,0);
+                    Vector3 AfterAnimationDirection = new Vector3(0,0,boardHitTimer);
+                    GetComponent<Rigidbody>().AddRelativeForce(-AfterAnimationDirection);
+                    transform.localEulerAngles = previousRotation + new Vector3(0,0,-1);
                 }
             }
             if(Animation>4f){
-
+                /*
                 // Updating max score if current score if higher
                 if (ballCollider.score > ballCollider.maxScore) {
                     ballCollider.maxScore = ballCollider.score;
@@ -67,7 +74,7 @@ public class moveBall : MonoBehaviour
                 }
 
                 // Resets the missed flag
-                ballCollider.missed = true;
+                ballCollider.missed = true;*/
 
                 ThrowBegin = false;
                 Animation = 0f;
@@ -75,6 +82,7 @@ public class moveBall : MonoBehaviour
                 GetComponent<MeshRenderer>().enabled = false;
                 HoopCollision = false;
                 firstUpdate = false;
+                boardHitTimer = 7f;
             }
         }
     }
@@ -88,6 +96,7 @@ public class moveBall : MonoBehaviour
         Vector3 facingOffset = new Vector3(xCoordinate,0,zCoordinate) - swipeDirection/750;
         rigid.isKinematic = false;
         transform.position = MathParabola.Parabola(currentPosition,facingOffset+new Vector3(0,0.3f,-0.1f),0.7f,Animation/1.5f);
+        transform.Rotate(3,0,0,Space.Self);
     }
     void RotateSwipeDirection(){
         swipeDirection = Quaternion.Euler(0, CameraRotation, 0) * swipeDirection;

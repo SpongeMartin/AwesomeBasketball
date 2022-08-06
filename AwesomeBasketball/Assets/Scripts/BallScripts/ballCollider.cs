@@ -16,16 +16,10 @@ public class ballCollider : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(other.name=="ball"){
-<<<<<<< HEAD
             missed = false;
             score += 1;
             currentScore.text = score.ToString();
           }
-=======
-            ScoreText.score += 1;
-        }
->>>>>>> c4dae430a02baaa6656965758bcdc4a0d7bc8a8c
-        //Debug.Log("Object entered the trigger");
     }
     
     void OnTriggerStay(Collider other)

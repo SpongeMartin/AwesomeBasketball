@@ -14,8 +14,10 @@ public class SwipeScript : MonoBehaviour {
 	GameObject arcamera;
 	GameObject ballIndicator;
 	GameObject ball;
+	GameObject ballParent;
 
     [SerializeField] TextMeshProUGUI status;
+	float swipeDistance;
 
 	void Start()
 	{
@@ -48,22 +50,24 @@ public class SwipeScript : MonoBehaviour {
 				endPos = Input.GetTouch (0).position;
 
 				// calculating swipe direction in 2D space and sends info to moveBall script
-				float swipeDistance=Vector2.Distance(startPos,endPos);
+				swipeDistance=Vector2.Distance(startPos,endPos);
 				if(swipeDistance>250f){
+					Debug.Log("WHAT");
 					moveBall.swipeDirection = new Vector3(startPos.x - endPos.x,0,0);
-					ball = GameObject.Find("ball");
-					ballIndicator = GameObject.Find("BallIndicator");
-					arcamera = GameObject.Find("ARCamera");
-					ballRepositionAndVisibility(ball,ballIndicator,arcamera);
+					arcamera = GameObject.Find("ARCamera");					
+					ballRepositionAndVisibility(arcamera);
 					moveBall.CameraRotation = CameraAngle(arcamera);
 					moveBall.ThrowBegin = true;
 				}
 			}
 
-			void ballRepositionAndVisibility(GameObject ball, GameObject ballIndicator,GameObject arcamera){
+			void ballRepositionAndVisibility(GameObject arcamera){
+				ball = GameObject.Find("ball");
+				ballIndicator = GameObject.Find("BallIndicator");
 				ball.transform.position = ballIndicator.transform.position;
 				ball.transform.rotation = arcamera.transform.rotation;
 				Rigidbody rigid = ball.GetComponent<Rigidbody>();
+				Rigidbody parentrigid = ball.GetComponent<Rigidbody>();
 				rigid.isKinematic = true;
 				rigid.isKinematic = false;
 				ballIndicator.GetComponent<MeshRenderer>().enabled = false;
