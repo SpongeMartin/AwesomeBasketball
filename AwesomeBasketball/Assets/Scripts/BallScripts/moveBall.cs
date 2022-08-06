@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class moveBall : MonoBehaviour
+public class MoveBall : MonoBehaviour
 {
 
     protected float Animation;
@@ -16,9 +16,11 @@ public class moveBall : MonoBehaviour
     public static float CameraRotation;
     GameObject hoop;
 
-    [SerializeField] TextMeshProUGUI status;
-    [SerializeField] TextMeshProUGUI currentScore;
-    [SerializeField] TextMeshProUGUI maxScore;
+    // DEPRICATED
+    // [SerializeField] TextMeshProUGUI status;
+    
+    [SerializeField] TextMeshProUGUI currentScoreText;
+    [SerializeField] TextMeshProUGUI maxScoreText;
 
 
     public static bool HoopCollision = false;
@@ -60,21 +62,32 @@ public class moveBall : MonoBehaviour
             if(Animation>4f){
                 /*
                 // Updating max score if current score if higher
-                if (ballCollider.score > ballCollider.maxScore) {
-                    ballCollider.maxScore = ballCollider.score;
-                    maxScore.text = ballCollider.maxScore.ToString();
+                if (BallCollider.score > BallCollider.maxScoreText) {
+                    BallCollider.maxScoreText = BallCollider.score;
+                    maxScoreText.text = BallCollider.maxScoreText.ToString();
                 }
 
                 // Code to be executed when you miss
-                if (ballCollider.missed) {
-                    status.text = "\n Your max score is: " + ballCollider.maxScore;
+                if (BallCollider.missed) {
+                    status.text = "\n Your max score is: " + BallCollider.maxScoreText;
 
-                    ballCollider.score = 0;
-                    currentScore.text = "0";
+                    BallCollider.score = 0;
+                    currentScoreText.text = "0";
                 }
 
                 // Resets the missed flag
-                ballCollider.missed = true;*/
+                BallCollider.missed = true;*/
+                
+                if(GameCycle.scoreHandler.HasUpdatedMaxScore()) {
+                    maxScoreText.text = GameCycle.scoreHandler.GetMaxScore().ToString();
+                }
+
+                // Case if the ball does not enter the hoop
+                if(!BallCollider.GetWasCollided()) {
+                    currentScoreText.text = "! You Missed !";
+                    GameCycle.scoreHandler.SetCurrentScore(0);
+                }
+                BallCollider.SetWasCollided(false);
 
                 ThrowBegin = false;
                 Animation = 0f;

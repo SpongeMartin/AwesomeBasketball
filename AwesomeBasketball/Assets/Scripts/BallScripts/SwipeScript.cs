@@ -49,15 +49,15 @@ public class SwipeScript : MonoBehaviour {
 				// getting release finger position
 				endPos = Input.GetTouch (0).position;
 
-				// calculating swipe direction in 2D space and sends info to moveBall script
+				// calculating swipe direction in 2D space and sends info to MoveBall script
 				swipeDistance=Vector2.Distance(startPos,endPos);
 				if(swipeDistance>250f){
 					Debug.Log("WHAT");
-					moveBall.swipeDirection = new Vector3(startPos.x - endPos.x,0,0);
+					MoveBall.swipeDirection = new Vector3(startPos.x - endPos.x,0,0);
 					arcamera = GameObject.Find("ARCamera");					
 					ballRepositionAndVisibility(arcamera);
-					moveBall.CameraRotation = CameraAngle(arcamera);
-					moveBall.ThrowBegin = true;
+					MoveBall.CameraRotation = CameraAngle(arcamera);
+					MoveBall.ThrowBegin = true;
 				}
 			}
 
