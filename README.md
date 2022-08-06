@@ -4,7 +4,7 @@
 
 ---
 
-## TOOD
+## TODO
 * [ ] save/load current skin state
 * [ ] **save**/load unlocked skins
 * [ ] save/load when switching scenes
