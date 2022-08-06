@@ -6,7 +6,7 @@ public class HoopCollider : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if(other.name=="ball"){
+        if(other.name=="Ball"){
             MoveBall.HoopCollision = true;
         }
     }

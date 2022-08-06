@@ -16,7 +16,7 @@ public class ScoreText : MonoBehaviour
     }
 
     public void SetText(string text) {
-        gameObject.GetComponent<TMP_Text>().text = GameCycle.scoreHandler.GetCurrentScore().ToString();
+        gameObject.GetComponent<TMP_Text>().text = Game.scoreHandler.GetCurrentScore().ToString();
     }
     // Update is called once per frame
     void Update()

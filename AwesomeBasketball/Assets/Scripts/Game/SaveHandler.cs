@@ -11,7 +11,7 @@ public class SaveHandler : MonoBehaviour
     // iOS and Android, persistentDataPath points to a public directory on the device 
     private static string path = Application.persistentDataPath + "/maxscore.abd";
 
-    public static void sh_SaveMaxScore (int a_maxScore) {
+    public static void sh_SaveGameData () {
         Debug.Log("Saving game data . . . ");
 
         BinaryFormatter _formatter = new BinaryFormatter();
@@ -21,15 +21,19 @@ public class SaveHandler : MonoBehaviour
         // FileMode -> Specifies how the operating system should open a file
         FileStream _stream = new FileStream(path, FileMode.Create);
 
-        GameData _data = new GameData(a_maxScore);
+
+        int _maxScore = Game.scoreHandler.GetMaxScore();
+        string _ballColor = Game.ballHandler.GetBallSkin();
+
+        GameData _data = new GameData(_maxScore, _ballColor);
         _formatter.Serialize(_stream, _data);
         _stream.Close();
     }
 
-    public static int sh_LoadMaxScore () {
+    public static GameData sh_LoadGameData () {
         if(!File.Exists(path)) {
-            Debug.LogError("No max score data found in " + path);
-            return 0;
+            Debug.LogError("No game data found in " + path + "\n Returning default game data!");
+            return GameData.defaultData;
         } 
     
         BinaryFormatter _formatter = new BinaryFormatter();
@@ -39,9 +43,14 @@ public class SaveHandler : MonoBehaviour
         // FileMode -> Specifies how the operating system should open a file
         FileStream _stream = new FileStream(path, FileMode.Open);
 
+        if(_stream.Length == 0) {
+            return GameData.defaultData;
+        }
+
         GameData data = (GameData)_formatter.Deserialize(_stream);
+        Debug.Log("Loaded data with" + data.maxScore + " max score and " + data.ballColor + " ballColor");
         _stream.Close();
-        return data.maxScore;
+        return data;
     }
 
 }

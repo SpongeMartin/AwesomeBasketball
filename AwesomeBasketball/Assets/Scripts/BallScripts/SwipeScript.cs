@@ -60,7 +60,7 @@ public class SwipeScript : MonoBehaviour {
 			}
 
 			void ballRepositionAndVisibility(GameObject arcamera){
-				ball = GameObject.Find("ball");
+				ball = GameObject.Find("Ball");
 				ballIndicator = GameObject.Find("BallIndicator");
 				ball.transform.position = ballIndicator.transform.position;
 				ball.transform.rotation = arcamera.transform.rotation;

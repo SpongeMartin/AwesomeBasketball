@@ -11,11 +11,17 @@ public class ScoreHandler {
     private int score;
     private int maxScore;
 
-    public ScoreHandler() {
+    public ScoreHandler(int ca_maxScore) {
         this.score = 0;
-        this.maxScore = SaveHandler.sh_LoadMaxScore();
-        this.currentScoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
-        this.maxScoreText = GameObject.Find("MaxScoreText").GetComponent<TextMeshProUGUI>();
+        this.maxScore = ca_maxScore;
+        GameObject cst = GameObject.Find("ScoreText");
+        GameObject mst = GameObject.Find("ScoreText");
+        if(cst != null) {
+            this.currentScoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        }
+        if(mst != null) {
+            this.maxScoreText = GameObject.Find("MaxScoreText").GetComponent<TextMeshProUGUI>();
+        }
     }
 
        public int IncrementCurrentScore() {
@@ -33,15 +39,13 @@ public class ScoreHandler {
 
     public int SetCurrentScore(int a_score) {
         this.score = a_score;
-        if(a_score > 0) {
-            this.currentScoreText.text = a_score.ToString();
-        }
+        SetCurrentScoreText(a_score.ToString());
         return this.score;
     }
 
     public int SetMaxScore(int a_maxScore) {
         this.maxScore = a_maxScore;
-        maxScoreText.text = a_maxScore.ToString();
+        SetMaxScoreText(a_maxScore.ToString());
         return this.maxScore;
     }
 
@@ -49,15 +53,19 @@ public class ScoreHandler {
         if(this.GetMaxScore() > this.GetCurrentScore()) {
             return false;
         }
-        this.SetMaxScore(GameCycle.scoreHandler.GetCurrentScore());
+        this.SetMaxScore(Game.scoreHandler.GetCurrentScore());
         return true;
     }
 
     public void SetCurrentScoreText(string text) {
-        this.currentScoreText.text = text;
+        if(this.currentScoreText != null) {
+            this.currentScoreText.text = text;
+        }
     }
 
     public void SetMaxScoreText(string text) {
-        this.maxScoreText.text = text;
+        if(this.maxScoreText != null) {
+            this.maxScoreText.text = text;
+        }
     }
 }

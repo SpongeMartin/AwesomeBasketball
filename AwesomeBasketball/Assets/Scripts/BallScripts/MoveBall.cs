@@ -72,12 +72,12 @@ public class MoveBall : MonoBehaviour
                 // Resets the missed flag
                 BallCollider.missed = true;*/
                 
-                GameCycle.scoreHandler.UpdateMaxScore()
+                Game.scoreHandler.UpdateMaxScore();
 
                 // Case if the ball does not enter the hoop
                 if(!BallCollider.GetWasCollided()) {
-                    GameCycle.scoreHandler.SetCurrentScore(0);
-                    GameCycle.scoreHandler.SetCurrentScoreText("X");
+                    Game.scoreHandler.SetCurrentScore(0);
+                    Game.scoreHandler.SetCurrentScoreText("X");
                 }
                 BallCollider.SetWasCollided(false);
 

@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class Relocate : MonoBehaviour
 {
     public void LoadScene(string sceneName){
-
-        // Save game data before relocating
-        SaveHandler.sh_SaveMaxScore(GameCycle.scoreHandler.GetMaxScore());
-
+        if(SceneManager.GetActiveScene().name != "MenuScene") {
+            SaveHandler.sh_SaveGameData();
+        }
 
         SceneManager.LoadScene(sceneName);
+        
+        Game.data = SaveHandler.sh_LoadGameData();
     }
 }

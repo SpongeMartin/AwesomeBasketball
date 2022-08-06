@@ -11,8 +11,8 @@ public class BallCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.name=="ball"){
-            GameCycle.scoreHandler.IncrementCurrentScore();
+        if(other.name=="Ball"){
+            Game.scoreHandler.IncrementCurrentScore();
             SetWasCollided(true);  
         }
     }

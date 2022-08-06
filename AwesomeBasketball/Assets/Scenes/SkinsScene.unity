@@ -218,9 +218,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1609252909}
-          m_TargetAssemblyTypeName: BallSelect, Assembly-CSharp
-          m_MethodName: ChangeBall
+        - m_Target: {fileID: 1194052654}
+          m_TargetAssemblyTypeName: SkinSelector, Assembly-CSharp
+          m_MethodName: ChangeBallSkin
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -325,9 +325,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1609252909}
-          m_TargetAssemblyTypeName: BallSelect, Assembly-CSharp
-          m_MethodName: ChangeBall
+        - m_Target: {fileID: 1194052654}
+          m_TargetAssemblyTypeName: SkinSelector, Assembly-CSharp
+          m_MethodName: ChangeBallSkin
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -613,6 +613,7 @@ GameObject:
   - component: {fileID: 356073750}
   - component: {fileID: 356073749}
   - component: {fileID: 356073748}
+  - component: {fileID: 356073751}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -670,6 +671,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &356073751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 356073747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a4f05e1d0a0f04f92c03fdeb36a8c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &468326685
 GameObject:
   m_ObjectHideFlags: 0
@@ -841,9 +854,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1609252909}
-          m_TargetAssemblyTypeName: BallSelect, Assembly-CSharp
-          m_MethodName: ChangeBall
+        - m_Target: {fileID: 1194052654}
+          m_TargetAssemblyTypeName: SkinSelector, Assembly-CSharp
+          m_MethodName: ChangeBallSkin
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -948,9 +961,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1609252909}
-          m_TargetAssemblyTypeName: BallSelect, Assembly-CSharp
-          m_MethodName: ChangeBall
+        - m_Target: {fileID: 1194052654}
+          m_TargetAssemblyTypeName: SkinSelector, Assembly-CSharp
+          m_MethodName: ChangeBallSkin
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1112,6 +1125,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1164545006}
   m_CullTransparentMesh: 1
+--- !u!1 &1194052653
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1194052655}
+  - component: {fileID: 1194052654}
+  m_Layer: 0
+  m_Name: SkinSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1194052654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194052653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81793942165840349adb298e69b8b90c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1194052655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194052653}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.471645, y: -3.6206756, z: 10.050642}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1227810006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,9 +1371,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1609252909}
-          m_TargetAssemblyTypeName: BallSelect, Assembly-CSharp
-          m_MethodName: ChangeBall
+        - m_Target: {fileID: 1194052654}
+          m_TargetAssemblyTypeName: SkinSelector, Assembly-CSharp
+          m_MethodName: ChangeBallSkin
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1421,9 +1478,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1609252909}
-          m_TargetAssemblyTypeName: BallSelect, Assembly-CSharp
-          m_MethodName: ChangeBall
+        - m_Target: {fileID: 1194052654}
+          m_TargetAssemblyTypeName: SkinSelector, Assembly-CSharp
+          m_MethodName: ChangeBallSkin
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1705,51 +1762,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1603581902}
   m_CullTransparentMesh: 1
---- !u!1 &1609252908
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1609252910}
-  - component: {fileID: 1609252909}
-  m_Layer: 0
-  m_Name: BallSelection
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1609252909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609252908}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b199598f84b10f47b93223a0d3f42fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  check: {fileID: 468326685}
---- !u!4 &1609252910
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609252908}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -31.0354, y: 1318.7465, z: 812.7556}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1630162104
 GameObject:
   m_ObjectHideFlags: 0
