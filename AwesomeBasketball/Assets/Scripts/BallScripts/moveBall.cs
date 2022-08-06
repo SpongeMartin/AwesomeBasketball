@@ -84,7 +84,7 @@ public class MoveBall : MonoBehaviour
 
                 // Case if the ball does not enter the hoop
                 if(!BallCollider.GetWasCollided()) {
-                    currentScoreText.text = "! You Missed !";
+                    currentScoreText.text = "X";
                     GameCycle.scoreHandler.SetCurrentScore(0);
                 }
                 BallCollider.SetWasCollided(false);
