@@ -14,17 +14,23 @@ public class hoopAnimationHandler : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {   
         if(Game.scoreHandler.GetCurrentScore() == 0){
-            anim.SetInteger("hoopsCount", 0);
-        }else if(Game.scoreHandler.GetCurrentScore() == 1){
-            anim.SetInteger("hoopsCount", 1);
-        }else if(Game.scoreHandler.GetCurrentScore() == 2){
-            anim.SetInteger("hoopsCount", 2);
-        }else if(Game.scoreHandler.GetCurrentScore() == 3){
-            anim.SetInteger("hoopsCount", 3);
-        }else if(Game.scoreHandler.GetCurrentScore() == 4){
-            anim.SetInteger("hoopsCount", 4);
+            anim.SetBool("backToStart", true);
+        }
+        if(Game.scoreHandler.GetCurrentScore() < 5){
+            anim.speed = 0;
+        }else if(Game.scoreHandler.GetCurrentScore() == 5){
+            anim.speed = 1;
+            anim.SetBool("backToStart", false);
+        }else if(Game.scoreHandler.GetCurrentScore() == 10){
+            anim.speed = 1.5f;
+        }else if(Game.scoreHandler.GetCurrentScore() == 15){
+            anim.speed = 2;
+        }else if(Game.scoreHandler.GetCurrentScore() == 20){
+            anim.speed = 2.5f;
+        }else if(Game.scoreHandler.GetCurrentScore() == 25){
+            anim.speed = 3;
         }
     }
 }
