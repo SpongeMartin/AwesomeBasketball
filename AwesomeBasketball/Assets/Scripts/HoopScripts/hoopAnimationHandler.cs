@@ -17,13 +17,13 @@ public class hoopAnimationHandler : MonoBehaviour
     {
         if(Game.scoreHandler.GetCurrentScore() == 0){
             anim.SetInteger("hoopsCount", 0);
-        }else if(Game.scoreHandler.GetCurrentScore() == 5){
+        }else if(Game.scoreHandler.GetCurrentScore() == 1){
             anim.SetInteger("hoopsCount", 1);
-        }else if(Game.scoreHandler.GetCurrentScore() == 10){
+        }else if(Game.scoreHandler.GetCurrentScore() == 2){
             anim.SetInteger("hoopsCount", 2);
-        }else if(Game.scoreHandler.GetCurrentScore() == 15){
+        }else if(Game.scoreHandler.GetCurrentScore() == 3){
             anim.SetInteger("hoopsCount", 3);
-        }else if(Game.scoreHandler.GetCurrentScore() == 20){
+        }else if(Game.scoreHandler.GetCurrentScore() == 4){
             anim.SetInteger("hoopsCount", 4);
         }
     }
