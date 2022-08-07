@@ -53,7 +53,7 @@ public class ScoreHandler {
         if(this.GetMaxScore() > this.GetCurrentScore()) {
             return false;
         }
-        this.SetMaxScore(Game.scoreHandler.GetCurrentScore());
+        this.SetMaxScore(Game.ScoreHandler.GetCurrentScore());
         return true;
     }
 

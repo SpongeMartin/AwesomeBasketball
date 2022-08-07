@@ -12,8 +12,13 @@ public class BallCollider : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if(other.name=="Ball"){
-            Game.scoreHandler.IncrementCurrentScore();
-            SetWasCollided(true);  
+            Game.ScoreHandler.IncrementCurrentScore();
+            SetWasCollided(true);
+
+            int _currentScore = Game.ScoreHandler.GetCurrentScore();
+            if(Game.SkinHandler.CanUnlockNewSkin(_currentScore)){
+                Game.SkinHandler.UnlockSkin(Game.SkinHandler.GetSkinFromScore(_currentScore));
+            }
         }
     }
     

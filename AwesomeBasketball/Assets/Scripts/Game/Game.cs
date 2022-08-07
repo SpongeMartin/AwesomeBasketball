@@ -5,8 +5,8 @@ using TMPro;
 
 public class Game : MonoBehaviour
 {
-    public static ScoreHandler scoreHandler;
-    public static BallHandler ballHandler;
+    public static ScoreHandler ScoreHandler;
+    public static SkinHandler SkinHandler;
     public static GameData data;
     public static bool skinChanged = false;
     [SerializeField] GameObject _ball;
@@ -23,12 +23,11 @@ public class Game : MonoBehaviour
         data = SaveHandler.sh_LoadGameData();
 
         // Initializes the score handler
-        scoreHandler = new ScoreHandler(data.maxScore);
-        scoreHandler.SetMaxScoreText(scoreHandler.GetMaxScore().ToString());
+        ScoreHandler = new ScoreHandler(data.maxScore);
+        ScoreHandler.SetMaxScoreText(ScoreHandler.GetMaxScore().ToString());
 
-        // Loads ball material data
-        Debug.Log("Loading ball color " + data.ballColor);
-        ballHandler = new BallHandler(data.ballColor);
+        // Loads ball meta data
+        SkinHandler = new SkinHandler(data.ballColor, data.unlockedSkins);
     }
 
     void Update() {
@@ -39,7 +38,7 @@ public class Game : MonoBehaviour
             MeshRenderer _ballMeshRenderer = _ball.GetComponent<MeshRenderer>();
             MeshRenderer _ballIndicatorMeshRenderer = _ballIndicator.GetComponent<MeshRenderer>();
             
-            string _skinName = ballHandler.GetBallSkin() + "Basketball";
+            string _skinName = SkinHandler.GetBallSkin() + "Basketball";
             Material _material = Resources.Load("Materials/BasketballTextures/" + _skinName, typeof(Material)) as Material;
 
             _ballMeshRenderer.material = _material;
