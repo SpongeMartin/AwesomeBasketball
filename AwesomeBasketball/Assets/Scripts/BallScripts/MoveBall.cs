@@ -86,7 +86,7 @@ public class MoveBall : MonoBehaviour
         float radianRotation = (float)(Math.PI / 180) * CameraRotation;
         float xCoordinate = (float)(hoopBallDistance*Math.Sin(radianRotation))+currentPosition.x;
         float zCoordinate = (float)(hoopBallDistance*Math.Cos(radianRotation))+currentPosition.z;
-        Vector3 facingOffset = new Vector3(xCoordinate,0,zCoordinate) - swipeDirection/750;
+        Vector3 facingOffset = new Vector3(xCoordinate,0,zCoordinate) - swipeDirection/(2650 / hoopBallDistance);
         rigid.isKinematic = false;
         transform.position = MathParabola.Parabola(currentPosition,facingOffset+new Vector3(0,0.3f,-0.1f),0.7f,Animation/1.5f);
         //transform.Rotate(-3,0,0,Space.Self);
