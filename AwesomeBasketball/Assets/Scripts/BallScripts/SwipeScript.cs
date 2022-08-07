@@ -58,14 +58,9 @@ public class SwipeScript : MonoBehaviour {
 			}
 
 			void ballRepositionAndVisibility(GameObject arcamera){
-				GameObject ball = GameObject.Find("Ball");
-				GameObject ballIndicator = GameObject.Find("BallIndicator");
-				ball.transform.position = ballIndicator.transform.position;
-				ball.transform.rotation = arcamera.transform.rotation;
-				Rigidbody rigid = ball.GetComponent<Rigidbody>();
-				Rigidbody parentrigid = ball.GetComponent<Rigidbody>();
-				rigid.isKinematic = true;
-				rigid.isKinematic = false;
+				transform.position = ballIndicator.transform.position;
+				transform.rotation = arcamera.transform.rotation;
+				rb.isKinematic = false;
 				ballIndicator.GetComponent<MeshRenderer>().enabled = false;
 				GetComponent<MeshRenderer>().enabled = true;
 			}

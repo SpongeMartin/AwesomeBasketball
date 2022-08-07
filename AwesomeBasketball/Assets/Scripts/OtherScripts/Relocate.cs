@@ -9,6 +9,7 @@ public class Relocate : MonoBehaviour
         if(SceneManager.GetActiveScene().name != "MenuScene") {
             SaveHandler.sh_SaveGameData();
         }
+        Game.skinChanged = false;
 
         SceneManager.LoadScene(sceneName);
         

@@ -15,7 +15,6 @@ public class MoveBall : MonoBehaviour
     Vector3 endPosition;
     public static float CameraRotation;
     GameObject hoop;
-
     public static bool HoopCollision = false;
 
     bool firstUpdate = false;
@@ -35,9 +34,11 @@ public class MoveBall : MonoBehaviour
             if(Animation<=1.5f && !HoopCollision){
                 currentPosition = GameObject.Find("ARCamera").transform.position;
                 hoop = GameObject.Find("hoop");
+                rigid.isKinematic=true;
                 CreateParabolaAnimation();
             }
             if((Animation>1.5f && Animation<4f) || HoopCollision){
+                rigid.isKinematic=false;
                 transform.position = transform.position;
                 if(!HoopCollision)GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0,0,15));
             }
@@ -75,11 +76,11 @@ public class MoveBall : MonoBehaviour
                 GetComponent<MeshRenderer>().enabled = false;
                 HoopCollision = false;
                 firstUpdate = false;
+                rigid.isKinematic=true;
             }
         }
     }
     void CreateParabolaAnimation(){
-        //Requires minor tweaks
         Vector3 hoopPosition = hoop.transform.position;
         float hoopBallDistance = Vector2.Distance(new Vector2(hoopPosition.x,hoopPosition.z),new Vector2(currentPosition.x,currentPosition.z));
         float radianRotation = (float)(Math.PI / 180) * CameraRotation;

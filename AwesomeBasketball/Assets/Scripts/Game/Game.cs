@@ -9,6 +9,8 @@ public class Game : MonoBehaviour
     public static BallHandler ballHandler;
     public static GameData data;
     public static bool skinChanged = false;
+    [SerializeField] GameObject _ball;
+    [SerializeField] GameObject _ballIndicator;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +32,8 @@ public class Game : MonoBehaviour
     }
 
     void Update() {
-        GameObject _ball = GameObject.Find("Ball");
-        GameObject _ballIndicator = GameObject.Find("BallIndicator");
+        //GameObject _ball = GameObject.Find("Ball");
+        //GameObject _ballIndicator = GameObject.Find("BallIndicator");
         if(!skinChanged && _ball != null && _ballIndicator != null) {
             Debug.Log("Here");
             MeshRenderer _ballMeshRenderer = _ball.GetComponent<MeshRenderer>();
