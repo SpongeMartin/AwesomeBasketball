@@ -6,7 +6,7 @@ using TMPro;
 public class ScoreHandler {
 
     private TextMeshProUGUI currentScoreText;
-    private TextMeshProUGUI maxScoreText;
+    private TextMeshPro maxScoreText;
     
     private int score;
     private int maxScore;
@@ -20,7 +20,7 @@ public class ScoreHandler {
             this.currentScoreText = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
         }
         if(mst != null) {
-            this.maxScoreText = GameObject.Find("MaxScoreText").GetComponent<TextMeshProUGUI>();
+            this.maxScoreText = GameObject.Find("MaxScoreText").GetComponent<TextMeshPro>();
         }
     }
 
