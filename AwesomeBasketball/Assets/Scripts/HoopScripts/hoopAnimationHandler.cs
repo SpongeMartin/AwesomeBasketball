@@ -15,21 +15,21 @@ public class hoopAnimationHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if(Game.scoreHandler.GetCurrentScore() == 0){
+        if(Game.ScoreHandler.GetCurrentScore() == 0){
             anim.SetBool("backToStart", true);
         }
-        if(Game.scoreHandler.GetCurrentScore() < 5){
+        if(Game.ScoreHandler.GetCurrentScore() < 5){
             anim.speed = 0;
-        }else if(Game.scoreHandler.GetCurrentScore() == 5){
+        }else if(Game.ScoreHandler.GetCurrentScore() == 5){
             anim.speed = 1;
             anim.SetBool("backToStart", false);
-        }else if(Game.scoreHandler.GetCurrentScore() == 10){
+        }else if(Game.ScoreHandler.GetCurrentScore() == 10){
             anim.speed = 1.5f;
-        }else if(Game.scoreHandler.GetCurrentScore() == 15){
+        }else if(Game.ScoreHandler.GetCurrentScore() == 15){
             anim.speed = 2;
-        }else if(Game.scoreHandler.GetCurrentScore() == 20){
+        }else if(Game.ScoreHandler.GetCurrentScore() == 20){
             anim.speed = 2.5f;
-        }else if(Game.scoreHandler.GetCurrentScore() == 25){
+        }else if(Game.ScoreHandler.GetCurrentScore() == 25){
             anim.speed = 3;
         }
     }

@@ -22,10 +22,11 @@ public class SaveHandler : MonoBehaviour
         FileStream _stream = new FileStream(path, FileMode.Create);
 
 
-        int _maxScore = Game.scoreHandler.GetMaxScore();
-        string _ballColor = Game.ballHandler.GetBallSkin();
+        int _maxScore = Game.ScoreHandler.GetMaxScore();
+        string _ballColor = Game.SkinHandler.GetBallSkin();
+        string[] _unlockedSkins = Game.SkinHandler.GetUnlockedSkins();
 
-        GameData _data = new GameData(_maxScore, _ballColor);
+        GameData _data = new GameData(_maxScore, _ballColor, _unlockedSkins);
         _formatter.Serialize(_stream, _data);
         _stream.Close();
     }
@@ -48,7 +49,7 @@ public class SaveHandler : MonoBehaviour
         }
 
         GameData data = (GameData)_formatter.Deserialize(_stream);
-        Debug.Log("Loaded data with" + data.maxScore + " max score and " + data.ballColor + " ballColor");
+        Debug.Log("Loaded data with " + data.maxScore + " max score and " + data.ballColor + " ballColor and " + data.unlockedSkins + " unlocked skins!");
         _stream.Close();
         return data;
     }
